@@ -1,0 +1,7 @@
+# ignored folders
+.gradle
+.idea
+**/build/**
+
+
+*.class
