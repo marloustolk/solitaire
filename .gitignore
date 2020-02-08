@@ -1,7 +1,12 @@
-# ignored folders
-.gradle
-.idea
-**/build/**
-
-
-*.class
+.gradle/
+.metadata/
+.settings/
+.idea/
+bin/
+build/
+target/
+.classpath
+.project
+.factorypath
+*.iml
+out
