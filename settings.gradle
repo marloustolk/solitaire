@@ -1,0 +1,5 @@
+rootProject.name = 'patience'
+include 'backend'
+include 'frontend-javafx'
+include 'frontend-angular'
+
