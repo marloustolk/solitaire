@@ -1,0 +1,88 @@
+<div class="board">
+  <div class="mainpiles">
+    <div class="pile closed">
+      <div [className]="hasClosedCards(mainPile) ? 'card main' : 'card empty'"
+           (click)="flip(mainPile)">
+        <p class="top"></p>
+        <p class="center main">{{getClosedCardsSize(mainPile)}}</p>
+        <p class="bottom"></p>
+      </div>
+    </div>
+
+    <div class="pile open">
+      <div *ngIf="hasOpenCards(mainPile); then showCard else showEmpty"></div>
+      <ng-template #showCard>
+        <div class="card"
+             *ngFor="let card of [getTopCard(mainPile)]"
+             [style.color]="getColor(card)"
+             (click)="click(mainPile, card)"
+             [style.border]="getBorder(card)">
+          <p class="top">{{card.suit + card.value}}</p>
+          <p class="center">{{card.suit + card.value}}</p>
+          <p class="bottom">{{card.suit + card.value}}</p>
+        </div>
+      </ng-template>
+      <ng-template #showEmpty>
+        <div class="card empty"></div>
+      </ng-template>
+    </div>
+  </div>
+
+
+  <div class="foundationpiles">
+
+    <div class="pile" *ngFor="let foundationPile of foundationPiles">
+      <ng-container *ngIf="hasOpenCards(foundationPile); then show else empty"></ng-container>
+
+      <ng-template #show>
+        <div class="card"
+             *ngFor="let card of [getTopCard(foundationPile)]"
+             [style.color]="getColor(card)"
+             (click)="click(foundationPile, card)">
+          <p class="top">{{card.suit + card.value}}</p>
+          <p class="center">{{card.suit + card.value}}</p>
+          <p class="bottom">{{card.suit + card.value}}</p>
+        </div>
+      </ng-template>
+
+      <ng-template #empty>
+        <div class="card empty" (click)="click(foundationPile, card)"></div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="playpiles">
+
+    <div class="pile bottom" *ngFor="let playPile of playPiles">
+
+      <ng-container *ngIf="!hasOpenCards(playPile)&&!hasClosedCards(playPile)">
+        <div class="card empty" (click)="click(playPile, null)"></div>
+      </ng-container>
+
+      <ng-container *ngIf="hasOpenCards(playPile); then showAll else onlyClosed"></ng-container>
+
+      <ng-template #showAll>
+        <div *ngFor="let card of getPlayPileCards(playPile) | keyvalue; index as i"
+             [className]="getClassPlayPile(i, card.value)"
+             (click)="card.value || click(playPile, card.key)"
+             [style.border]="card.value || getBorder(card.key)"
+             [style.color]="getColor(card.key)">
+          <ng-container *ngIf="!card.value">
+            <p class="top">{{card.key.suit + card.key.value}}</p>
+            <p class="center">{{card.key.suit + card.key.value}}</p>
+            <p class="bottom">{{card.key.suit + card.key.value}}</p>
+          </ng-container>
+        </div>
+      </ng-template>
+
+      <ng-template #onlyClosed>
+        <div *ngFor="let card of getPlayPileCards(playPile) | keyvalue; index as i"
+             [className]="getClassPlayPile(i, card.value)"
+             (click)="i!=(getClosedCardsSize(playPile)-1) || flip(playPile)">
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>
+

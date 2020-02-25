@@ -16,6 +16,14 @@ export class GameService {
     return this.http.get(this.url + "/name", { responseType: 'text' }).pipe(catchError(this.handleError));
   }
 
+  public start() {
+    return this.http.post(this.url + "/start", {}).pipe(catchError(this.handleError));
+  }
+
+  public stop() {
+    return this.http.post(this.url + "/stop", {}).pipe(catchError(this.handleError));
+  }
+
   public getTopCard(placing: Place, closed:boolean): Observable<Card> {
     let getUrl = this.url + "/placing/" + Number(placing) + "/card/topcard?closed=" + closed;
     return this.http.get<Card>(getUrl).pipe(catchError(this.handleError));

@@ -1,0 +1,19 @@
+.welcome {
+  padding: 1%;
+  color: white;
+  height: 5vh;
+  background-color:black;
+}
+
+p.center {
+  text-align:center;
+  font-size: 200%;
+  margin: 0;
+}
+
+.error {
+  font-size: 120%;
+  text-align:center;
+  color: #e22251;
+}
+

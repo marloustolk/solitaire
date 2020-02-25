@@ -1,0 +1,28 @@
+.buttons {
+  float: left;
+  width: 20vw;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  margin-top: 10%;
+  padding: 5%;
+  height:10%;
+  width: 60%;
+  border: 1px solid #000000;
+  border-radius: 5%;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 100%;
+  box-shadow: inset 0px 0px 0px 3px #445;
+}
+
+button:hover {
+  background-color: #445;
+  box-shadow: inset 0px 0px 0px 3px #ffffff;
+}
+
+

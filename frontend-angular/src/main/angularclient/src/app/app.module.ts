@@ -4,11 +4,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {GameService} from "./service/game.service";
 import { HttpClientModule } from '@angular/common/http';
+import { WelcomeComponent } from './component/welcome/welcome.component';
+import { BoardComponent } from './component/board/board.component';
+import { ButtonsComponent } from './component/buttons/buttons.component';
 //import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomeComponent,
+    BoardComponent,
+    ButtonsComponent
   ],
   imports: [
     BrowserModule,
