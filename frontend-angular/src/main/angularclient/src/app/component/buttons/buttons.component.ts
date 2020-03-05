@@ -3,7 +3,12 @@ import { GameService } from "../../service/game.service";
 
 @Component({
   selector: 'app-buttons',
-  templateUrl: './buttons.component.html',
+  template: `
+              <p class="buttons">
+                <button (click)="start()">new game</button>
+                <button (click)="stop()">stop game</button>
+              </p>
+              `,
   styleUrls: ['./buttons.component.css']
 })
 export class ButtonsComponent implements OnInit {

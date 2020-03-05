@@ -3,7 +3,12 @@ import {GameService} from "../../service/game.service";
 
 @Component({
   selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
+  template: `
+              <div class="welcome">
+                  <p class="center">Patience</p>
+                  <div class="error" *ngIf=hasError()>{{error}}</div>
+              </div>
+              `,
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {

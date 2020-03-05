@@ -38,15 +38,11 @@ export class BoardComponent implements OnInit {
   }
 
   refresh(place: Place): void {
-    console.log("refresh " + place);
-    this.gameService.getSelection().subscribe(data => this.selection = data);
-    this.gameService.getSelectionPlace().subscribe(data => this.selectionPlace = data);
     this.gameService.getCards(place, true).subscribe(data => this.closedCardPiles.set(place, data));
     this.gameService.getCards(place, false).subscribe(data => this.openCardPiles.set(place, data));
   }
 
   start(): void {
-   console.log("refresh all!");
    this.gameService.start().subscribe();
    Object.keys(Place).filter(key => isNaN(Number(Place[key]))).forEach(place => {
      this.refresh(Number(place));
@@ -54,7 +50,6 @@ export class BoardComponent implements OnInit {
   }
 
   clear(): void {
-   console.log("clear");
    this.gameService.stop().subscribe();
       Object.keys(Place).filter(key => isNaN(Number(Place[key]))).forEach(place => {
         this.refresh(Number(place));
@@ -68,6 +63,8 @@ export class BoardComponent implements OnInit {
 
   click(place: Place, card: Card){
       this.gameService.click(place, card).subscribe();
+      this.gameService.getSelectionPlace().subscribe(data => this.selectionPlace = data);
+      this.gameService.getSelection().subscribe(data => this.selection = data);
       if (this.selectionPlace != null) {
         this.refresh(Place[Place[this.selectionPlace]]);
       }
@@ -82,57 +79,9 @@ export class BoardComponent implements OnInit {
     return this.closedCardPiles.get(place);
   }
 
-  getTopCard(place:Place) {
+  getTopCard(place:Place): Card {
     let pile = this.openCardPiles.get(place);
     return (pile == null || pile.length == 0) ? null : pile[pile.length -1];
-  }
-
-  hasOpenCards(place:Place): boolean {
-    return this.hasCards(this.getOpenCards(place));
-  }
-
-  hasClosedCards(place:Place): boolean {
-    return this.hasCards(this.getClosedCards(place));
-  }
-
-  hasCards(pile: Card[]): boolean {
-    return !(pile == null || pile.length == 0);
-  }
-
-
-  getClosedCardsSize(place:Place): number {
-    return this.getClosedCards(place).length;
-  }
-
-  getColor(card: Card) {
-    let cardString = card.suit.concat(card.value);
-    return (cardString.includes("♥") || cardString.includes("♦")) ? "#b01030" : "#000000";
-  }
-
-  getBorder(card: Card) {
-    if (this.selection == null || this.selection.length == 0){
-      return "1px solid #000000";
-    }
-    for (const cardToMatch of this.selection) {
-      if (card.suit.concat(card.value) === cardToMatch.suit.concat(cardToMatch.value)){
-        return "2px solid #b01030";
-      }
-    }
-    return "1px solid #000000";
-  }
-
-  getClassClosedCard(index: number): string{
-    return "card main nr".concat((index + 1).toString());
-  }
-
-  getClassOpenCard(place:Place, index: number): string{
-    let nr = this.getClosedCards(place).length;
-    return "card nr".concat((nr + index + 1).toString());
-  }
-
-  getClassPlayPile(index:number, closed:boolean): string {
-    let nr = " nr".concat((index + 1).toString());
-    return closed ? "card main".concat(nr) : "card ".concat(nr);
   }
 
   getPlayPileCards(place:Place): Map<Card, boolean> {

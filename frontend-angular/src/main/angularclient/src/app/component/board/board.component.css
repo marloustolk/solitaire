@@ -44,15 +44,12 @@
 }
 
 .pile {
-  display: grid;
-  grid-template-columns: auto;
-  padding: 0% 15% 0% 15%;
-
-  grid-template-rows: auto;
-  justify-items: center;
-  border-radius: 5%;
   grid-row-start: 1;
   grid-row-end: 2;
+  padding: 0% 15% 0% 15%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
 }
 
 .pile.bottom {
@@ -63,186 +60,18 @@
   background-color: black;
 }
 
-.card {
+.card.placeholder {
+  position: relative;
   grid-row-start: 1;
   grid-row-end: 7;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  background-color: #ececec;
-  border: 1px solid #000000;
-  border-radius: 10%;
-  z-index: 1;
-  position: relative;
-  width: 90%;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  box-shadow: inset 0px 0px 0px 1px #9999aa;
+  padding: 6px;
+  margin-top: -6px;
+  margin-left: -6px;
 }
-
-.card:hover {
-  background-color:#ffffff;
-  width: 93%;
-}
-
-.card.nr2 {
-  grid-row-start: 2;
-  grid-row-end: 8;
-  z-index: 2;
-}
-
-.card.nr3 {
-  grid-row-start: 3;
-  grid-row-end: 9;
-  z-index: 3;
-}
-
-.card.nr4 {
-  grid-row-start: 4;
-  grid-row-end: 10;
-  z-index: 4;
-}
-
-.card.nr5 {
-  grid-row-start: 5;
-  grid-row-end: 11;
-  z-index: 5;
-}
-
-.card.nr6 {
-  grid-row-start: 6;
-  grid-row-end: 12;
-  z-index: 6;
-}
-
-.card.nr7 {
-  grid-row-start: 7;
-  grid-row-end: 13;
-  z-index: 7;
-}
-
-.card.nr8 {
-  grid-row-start: 8;
-  grid-row-end: 14;
-  z-index: 8;
-}
-
-.card.nr9 {
-  grid-row-start: 9;
-  grid-row-end: 15;
-  z-index: 9;
-}
-
-.card.nr10 {
-  grid-row-start: 10;
-  grid-row-end: 16;
-  z-index: 10;
-}
-
-.card.nr11 {
-  grid-row-start: 11;
-  grid-row-end: 17;
-  z-index: 11;
-}
-
-.card.nr12 {
-  grid-row-start: 12;
-  grid-row-end: 18;
-  z-index: 12;
-}
-
-.card.nr13 {
-  grid-row-start: 13;
-  grid-row-end: 19;
-  z-index: 13;
-}
-
-.card.nr14 {
-  grid-row-start: 14;
-  grid-row-end: 20;
-  z-index: 14;
-}
-
-.card.nr15 {
-  grid-row-start: 15;
-  grid-row-end: 21;
-  z-index: 15;
-}
-
-.card.nr16 {
-  grid-row-start: 16;
-  grid-row-end: 22;
-  z-index: 16;
-}
-
-.card.nr17 {
-  grid-row-start: 17;
-  grid-row-end: 23;
-  z-index: 17;
-}
-
-.card.nr18 {
-  grid-row-start: 18;
-  grid-row-end: 24;
-  z-index: 18;
-}
-
-.card.nr19 {
-  grid-row-start: 19;
-  grid-row-end: 25;
-  z-index: 19;
-}
-
-.card.nr20 {
-  grid-row-start: 20;
-  grid-row-end: 26;
-  z-index: 20;
-}
-
 .card.empty {
-  background-color: transparent;
+  width: 95%;
+  height: 95%;
+  margin: 5% 0% 5% 0%;
+  border-radius: 10%;
   border: 3px solid #400040;
-  box-shadow: none;
-}
-
-.card.main {
-  background-color:#556;
-  background-image: linear-gradient(30deg, #632c63 12%, transparent 12.5%, transparent 87%, #632c63 87.5%, #632c63),
-  linear-gradient(150deg, #632c63 12%, transparent 12.5%, transparent 87%, #632c63 87.5%, #632c63),
-  linear-gradient(30deg, #632c63 12%, transparent 12.5%, transparent 87%, #632c63 87.5%, #632c63),
-  linear-gradient(150deg, #632c63 12%, transparent 12.5%, transparent 87%, #632c63 87.5%, #632c63),
-  linear-gradient(60deg, #400040 25%, transparent 25.5%, transparent 75%, #400040 75%, #400040),
-  linear-gradient(60deg, #400040 25%, transparent 25.5%, transparent 75%, #400040 75%, #400040);
-  background-size:80px 140px;
-  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
-  box-shadow: inset 0px 0px 0px 2px #ffffff;
-  vertical-align: middle;
-}
-
-.card.empty:hover {
-  width: 90%;
-}
-
-p.top {
-  text-align:left;
-  font-size: 100%;
-  vertical-align: middle;
-  margin: 0 0 0 5%;
-  height: 30%;
-}
-
-p.center {
-  text-align:center;
-  font-size: 200%;
-  margin: 0 0 0 0;
-  height: 50%;
-}
-
-p.bottom {
-  text-align:right;
-  margin: 0 5% 0 0;
-  height: 20%;
-}
-
-p.center.main {
-  color:white;
 }

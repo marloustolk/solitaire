@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './component/welcome/welcome.component';
 import { BoardComponent } from './component/board/board.component';
 import { ButtonsComponent } from './component/buttons/buttons.component';
+import { CardComponent } from './component/card/card.component';
 //import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ButtonsComponent } from './component/buttons/buttons.component';
     AppComponent,
     WelcomeComponent,
     BoardComponent,
-    ButtonsComponent
+    ButtonsComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
