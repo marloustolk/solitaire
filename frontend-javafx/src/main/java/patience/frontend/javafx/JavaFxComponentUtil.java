@@ -116,6 +116,7 @@ public class JavaFxComponentUtil {
             button.setText("");
         } else {
             button.setText(card.toString());
+            button.setPadding(Insets.EMPTY);
             button.setTextFill(card.isRed() ? RED : BLACK);
             button.alignmentProperty().setValue(Pos.TOP_CENTER);
             if (!isSmall) {
